@@ -1,8 +1,8 @@
 package com.app.pages;
 
 import java.util.List;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -51,6 +51,32 @@ public class SuitCRMDashboard {
     
     @FindBy(xpath = "//div[@class='desktop-bar']//a[.='Create Task']")
     public WebElement createTaskLink;
+    
+    @FindBy(id = "grouptab_4")
+    public WebElement collobarationMenu;
+    
+    @FindBy(id ="grouptab_0")
+	public WebElement salesMenu;
+     
+    @FindBy(id = "grouptab_2")
+	public WebElement supportMenu;
+    
+    @FindBy(id = "grouptab_5")
+	public WebElement allMenu;
+    
+    @FindBy(id = "grouptab_3")
+	public WebElement activitiesMenu;
+    
+    public void creteOptions(String option) {
+    	createMenu.click();
+    	driver.findElement(By.xpath("//div[@class='desktop-bar']//a[.='"+option+"']")).click();
+    	
+    }
+    
+    public List<WebElement> topMenuOptions(String name){
+    	List<WebElement> options = driver.findElements(By.xpath("//a[.='"+name+"']//parent::span//li"));
+    	return options;
+    }
     
     
     public void clickCreateTask() {

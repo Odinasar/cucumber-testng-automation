@@ -3,11 +3,14 @@ package com.app.step_defenitions;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+import java.io.File;
+
 import org.openqa.selenium.WebDriver;
 
 import com.app.pages.SuitCRMContacts;
 import com.app.pages.SuitCRMDashboard;
 import com.app.pages.SuitCRMLoginPage;
+import com.app.utilities.ConfigurationReader;
 import com.app.utilities.Driver;
 
 import cucumber.api.PendingException;
@@ -34,8 +37,8 @@ public class DashBoardActions {
 	@Given("^duplicated contact \"([^\"]*)\" exists$")
 	public void duplicated_contact_exists(String arg1) {
 		dashPage.openContacts();
-		String pathOfVcard = "C:\\Users\\Beknazar\\eclipse-workspace\\cucumber-testng-automation\\testData\\john-doe.vcf";
-		contactPage.importVCard(pathOfVcard);
+		String pathOfVcardInYourID = ConfigurationReader.getProperty("contactfile");
+		contactPage.importVCard(pathOfVcardInYourID);
 		
 	}
 

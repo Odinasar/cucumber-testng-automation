@@ -1,5 +1,6 @@
 package com.app.pages;
 
+import java.io.File;
 import java.util.List;
 
 import org.openqa.selenium.Alert;
@@ -59,8 +60,12 @@ public class SuitCRMContacts {
 	
 	@FindBy(xpath = "//div[.='View Contacts']")
 	public WebElement viewContacts;
+	
+	@FindBy(css = "input[title='Save']")
+	public WebElement saveContact;
 		
 	public int getNumberOfContacts(String contactName) {
+		
 		List<WebElement> contacts = driver.findElements(By.xpath("//a[contains(text(),'John Doe')]"));
 		return contacts.size();
 	}
@@ -78,8 +83,9 @@ public class SuitCRMContacts {
 	}
 
 	public void importVCard(String path) {
+		File file = new File(path);
 		createContactVCardLink.click();
-		vCardInput.sendKeys(path);
+		vCardInput.sendKeys(file.getAbsolutePath());
 		importVcard.click();
 	}
 

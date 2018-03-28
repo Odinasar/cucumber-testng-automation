@@ -6,7 +6,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 		plugin = {"pretty",
 			  "html:target/cucumber-report"	
 		},
-		tags = "@Dev",
+		tags = "@create_contact",
 		//                    UserinterfaceTest.feature  if we will put after / it will run certain feature file
 		features="src/test/resources/com/app/features/", // this line refer to the all the feature files. 
 		glue="com/app/step_defenitions/",

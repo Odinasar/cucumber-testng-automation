@@ -3,7 +3,7 @@ Feature: Search by contact name
     As a user,
     I should be able to search for my contacts,
     So that I can access their information easily.
-  @search_modul
+  @search_modul @smoke @regression
   Scenario: Search contact name
     Given I logged in into suiteCRM
     When I search for "John Doe"

@@ -17,6 +17,12 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BrowserUtils {
+	
+	public static void scrollDown(WebElement element) {
+		  element.click();
+		  JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();
+		  jse.executeScript("window.scrollBy(0,1600);");
+	}
 
 	public static List<String> convertToString(List<WebElement> el) {
 		List<String> strs = new ArrayList<>();
@@ -37,6 +43,11 @@ public class BrowserUtils {
 	public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
 		WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeToWaitInSec);
 		return wait.until(ExpectedConditions.visibilityOf(element));
+	}
+	
+	public static void waitForTextApear(WebElement element,String text, int timeToWaitInSec) {
+		WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeToWaitInSec);
+	    wait.until(ExpectedConditions.textToBePresentInElementValue(element, text));
 	}
 
 	public static WebElement waitForVisibility(By locator, int timeout) {

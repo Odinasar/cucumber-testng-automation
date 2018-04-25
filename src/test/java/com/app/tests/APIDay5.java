@@ -1,6 +1,6 @@
 package com.app.tests;
-import static io.restassured.RestAssured.given;
-import static org.testng.Assert.assertEquals;
+import static io.restassured.RestAssured.*;
+import static org.testng.Assert.*;
 
 import java.util.Random;
 

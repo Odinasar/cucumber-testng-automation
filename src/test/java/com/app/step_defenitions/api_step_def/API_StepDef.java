@@ -8,9 +8,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import com.app.pages.HRAppDepEmpPage;
+import com.app.pages.HRSearchEMP;
 import com.app.tests.MyPojo.Employee;
 import com.app.tests.MyPojo.Location;
 import com.app.utilities.ConfigurationReader;
+import com.app.utilities.Driver;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
@@ -154,7 +157,47 @@ public class API_StepDef {
 	    
 	    assertEquals(response.getStreet_address(),list.get(0).getStreet_address());
 	    System.out.println(response.getStreet_address()+" <> "+list.get(0).getStreet_address());
-	    
-	    
+	}
+	
+	HRAppDepEmpPage depHome = new HRAppDepEmpPage();
+	HRSearchEMP searchPage = new HRSearchEMP();
+	Employee empUI = new Employee();
+	
+	@Then("^I am on DeptEmpPage$")
+	public void i_am_on_DeptEmpPage() {
+		Driver.getDriver().get(ConfigurationReader.getProperty("hrapp.url"));
+	}
+	
+	@Then("^I search for Employee with \"([^\"]*)\" id$")
+	public void i_search_for_Employee_with_id(String id) {
+		if(!id.equals("random")) {
+			this.id = Integer.parseInt(id);
+		}
+	    depHome.query.click();
+	    searchPage.idBox.clear();
+	    searchPage.idBox.sendKeys(String.valueOf(this.id));
+	    searchPage.searchButton.click();
+	}
+    
+
+	 
+	@Then("^UI search result must match API post employee data$")
+	public void ui_search_result_must_match_API_post_employee_data() throws InterruptedException {
+		Thread.sleep(1000);
+		empUI.setFirst_name(searchPage.empFirstName.getAttribute("value"));
+		empUI.setLast_name(searchPage.empLastName.getAttribute("value"));
+		empUI.setEmail(searchPage.empEmail.getAttribute("value"));
+		empUI.setDepartment_id(Integer.parseInt(searchPage.empDepId.getText().trim()));
+		empUI.setJob_id(searchPage.empJobId.getAttribute("value"));
+		empUI.setSalary(Integer.parseInt(searchPage.empSalary.getAttribute("value")));
+		empUI.setEmployee_id(Integer.parseInt(searchPage.empID.getAttribute("value")));
+		
+		assertEquals(emp.getEmployee_id(),empUI.getEmployee_id());
+		assertEquals(emp.getFirst_name(),empUI.getFirst_name());
+		assertEquals(emp.getLast_name(),empUI.getLast_name());
+		assertEquals(emp.getEmail(),empUI.getEmail());
+		assertEquals(emp.getDepartment_id(),empUI.getDepartment_id());
+		assertEquals(emp.getJob_id(),empUI.getJob_id());
+		assertEquals(emp.getSalary(),empUI.getSalary());
 	}
 }

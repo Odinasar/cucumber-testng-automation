@@ -194,8 +194,7 @@ public class Employee {
 			if (other.last_name != null)
 				return false;
 		} else if (!last_name.equals(other.last_name))
-			return false;
-		
+			return false;	
 		if (manager_id == null) {
 			if (other.manager_id != null)
 				return false;

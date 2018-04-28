@@ -54,6 +54,8 @@ public class HRAppDepEmpPage {
    @FindBy(css = "div[id='pt1:pc1:_dchTbr']>a")
    public WebElement detach;
    
+   @FindBy(css = "button[id='pt1:cb6']")
+   public WebElement query;
  
    
    public void searchForDepartment(int depID) {

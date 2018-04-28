@@ -1,4 +1,4 @@
-package com.app.step_defenitions;
+package com.app.step_defenitions.api_step_def;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;

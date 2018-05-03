@@ -3,6 +3,7 @@ package com.app.step_defenitions.api_step_def;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,7 @@ import cucumber.api.java.en.When;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import static java.lang.Math.*;
 
 public class API_StepDef {
 	RequestSpecification request;
@@ -201,4 +203,10 @@ public class API_StepDef {
 		assertEquals(emp.getJob_id(),empUI.getJob_id());
 		assertEquals(emp.getSalary(),empUI.getSalary());
 	}
+	Collection col; 
+	
+	Collection col1 = col;
+	
+	
+	
 }

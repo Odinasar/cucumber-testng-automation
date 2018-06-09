@@ -1,4 +1,2 @@
-02.05.2018 20:36:08 INFO  Log4jDemo:12 - This is info log step 
-02.05.2018 20:36:08 WARN  Log4jDemo:13 - This is worning
-02.05.2018 20:36:08 DEBUG Log4jDemo:14 - This is a debug message
-02.05.2018 20:36:08 ERROR Log4jDemo:15 - This is a error step
+02.05.2018 22:03:03 ERROR JDBCWithLog4j:37 - Something went wrong. 
+02.05.2018 22:03:03 ERROR JDBCWithLog4j:38 - [Ljava.lang.StackTraceElement;@fba92d3

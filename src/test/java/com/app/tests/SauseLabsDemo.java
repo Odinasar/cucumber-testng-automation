@@ -24,11 +24,13 @@ public class SauseLabsDemo {
 	
       @BeforeTest
       public void setUp() throws MalformedURLException {
+    	  
     	DesiredCapabilities caps = DesiredCapabilities.chrome();
     	caps.setPlatform(Platform.LINUX);
     	caps.setCapability("version", "latest");
     	
     	driver = new RemoteWebDriver(new URL(URL),caps);
+    	
       }
       
       @Test
